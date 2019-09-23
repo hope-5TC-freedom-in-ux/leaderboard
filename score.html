@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Score</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-vue@2.0.2/dist/bootstrap-vue.min.js"></script>
+<script
+src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="vueScore.css">
+<link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+
+<body>
+  <div id="app">
+    <b-container>
+      <b-row align-h="center" class="title">
+        <b-col cols="auto"class="main-title">
+          Voici votre tableau de scores {{ username }}
+        </b-col>
+      </b-row>
+      <b-row align-h="center">
+        <b-col class="challenge-frame" @mouseenter="hover(0)" @mouseleave="leave(0)" cols="4">
+          <b-row align-h="center" class="header-chall">
+            {{global_score.name}}
+          </b-row>
+          <b-row v-show="!global_score.hovered" class="row body-chall mb-1">
+            <div class="col-sm-5">temps</div>
+            <div class="col-sm-7" class="bars">
+              <b-progress height="20px" :value="global_score.time" variant="light"></b-progress>
+            </div>
+
+            <div class="col-sm-5">intégrité</div>
+            <div class="col-sm-7" class="bars">
+              <b-progress height="20px" :value="global_score.privacy" variant="light"></b-progress>
+            </div>
+          </b-row>
+          <b-row v-show="global_score.hovered">
+            <b-col class="comment-chall">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet leo ipsum, eu laoreet libero pellentesque eget. Integer sed iaculis leo. Nullam sem diam, vulputate in lorem ut, imperdiet laoreet tortor. Quisque scelerisque sollicitudin nunc. Nullam purus turpis, lacinia et risus non, suscipit tempus orci. Duis sapien nulla, tempus sit amet hendrerit ut, viverra non lacus. Nulla mollis, est vitae pulvinar aliquet, massa elit tempus ex, in vehicula quam turpis eget augue. Nunc cursus lacus porta ipsum viverra, eget maximus diam hendrerit. Etiam in augue semper lectus porta posuere. Quisque et eleifend sapien, quis viverra risus. Sed in magna justo. Phasellus porta ultrices nisi. Aliquam eget porttitor tellus, vel finibus eros. Etiam facilisis bibendum cursus.
+
+              Suspendisse a sapien eget magna vestibulum porta non et ipsum. Aenean finibus, elit ac elementum aliquet, odio purus commodo risus, eu gravida magna nisi non lorem. Donec eget iaculis nisl. Phasellus a condimentum orci. Maecenas hendrerit, turpis sed dictum fringilla, ipsum dui scelerisque est, ut bibendum nulla felis sed felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut elementum neque leo, at suscipit elit fringilla pharetra. Aenean facilisis tincidunt nibh, fermentum rhoncus quam malesuada id. Vivamus in risus et dui imperdiet aliquam quis eget ex.
+            </b-col>
+          </b-row>
+        </b-col>
+      </b-row>
+
+
+      <b-row class="frames">
+        <b-col class="challenge-frame" cols="4" v-for="elem,i in scores">
+          <div class="inner" v-show="!elem.hovered" @mouseenter="hover(i)" @mouseleave="leave(i)">
+            <b-row align-h="center" class="header-chall">
+              {{elem.name}}
+            </b-row>
+            <b-row align-v="center" class="row body-chall mb-1">
+              <div class="col-sm-5">temps</div>
+              <div class="col-sm-7" class="bars">
+                <b-progress height="20px" :value="elem.time" variant="light"></b-progress>
+              </div>
+              <div class="col-sm-5">intégrité</div>
+              <div class="col-sm-7" class="bars">
+                <b-progress height="20px" :value="elem.privacy" variant="light"></b-progress>
+              </div>
+            </b-row>
+          </div>
+          <div class="inner comment-chall" v-show="elem.hovered" @mouseenter="hover(i)" @mouseleave="leave(i)">
+
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet leo ipsum, eu laoreet libero pellentesque eget. Integer sed iaculis leo. Nullam sem diam, vulputate in lorem ut, imperdiet laoreet tortor. Quisque scelerisque sollicitudin nunc. Nullam purus turpis, lacinia et risus non, suscipit tempus orci. Duis sapien nulla, tempus sit amet hendrerit ut, viverra non lacus. Nulla mollis, est vitae pulvinar aliquet, massa elit tempus ex, in vehicula quam turpis eget augue. Nunc cursus lacus porta ipsum viverra, eget maximus diam hendrerit. Etiam in augue semper lectus porta posuere. Quisque et eleifend sapien, quis viverra risus. Sed in magna justo. Phasellus porta ultrices nisi. Aliquam eget porttitor tellus, vel finibus eros. Etiam facilisis bibendum cursus.
+
+              Suspendisse a sapien eget magna vestibulum porta non et ipsum. Aenean finibus, elit ac elementum aliquet, odio purus commodo risus, eu gravida magna nisi non lorem. Donec eget iaculis nisl. Phasellus a condimentum orci. Maecenas hendrerit, turpis sed dictum fringilla, ipsum dui scelerisque est, ut bibendum nulla felis sed felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut elementum neque leo, at suscipit elit fringilla pharetra. Aenean facilisis tincidunt nibh, fermentum rhoncus quam malesuada id. Vivamus in risus et dui imperdiet aliquam quis eget ex.
+          </div>
+        </b-col>
+
+      </b-row>
+    </b-container>
+  </div>
+</body>
+
+<script src="vueScore.js"></script>
+
+</html>
+
+<style>
+@import url(//fonts.googleapis.com/css?family=Open+Sans);
+
+:root{
+  --dark-color:#444;
+  --darker-color:#222;
+  --light-color:#FFF;
+  --pseudo-light-color:#CCC;
+  --main-font:"Roboto";
+  --main-font-weight:300;
+}
+
+.main-title{
+  background-color: var(--light-color);
+  color:var(--dark-color);
+}
+
+.title{
+  margin:2rem;
+}
+
+.progress{
+  border:1px solid var(--light-color);
+  border-radius:0px;
+  background-color:transparent;
+}
+
+.frames{
+  padding-top:2rem;
+}
+
+.inner{
+  padding:15px;
+  padding-top:0;
+  padding-bottom:0;
+  border:1px solid var(--light-color);
+  height:30vh;
+}
+
+.bullet{
+  padding:0;
+}
+
+.comment-chall{
+  font-size:1rem;
+  text-align: justify;
+  overflow-y: scroll;
+  margin-right:5px;
+}
+
+.header-chall{
+  padding:15px;
+}
+
+.body-chall{
+  margin-top:15px;
+}
+
+.challenge-frame{
+  padding:1vh;
+  height:30vh;
+  font-size:1.3rem;
+}
+
+body{
+  background-color: var(--dark-color) !important;
+  color:var(--light-color) !important;
+  font-family: 'Roboto','AvenirLight', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  font-weight: 300 !important;
+  /* color: #2c3e50; */
+  font-size:2rem;
+  padding:1rem;
+}
+</style>
