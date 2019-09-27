@@ -10,15 +10,16 @@ var app = new Vue({
   },
   computed:{
     global_score(){
-      if(this.scores !== undefined){
+      var self = this;
+      if(self.scores !== undefined){
         let reducer = function(accu,current){
-          let length = this.scores.length;
+          let length = self.scores.length;
           return {
             privacy:accu.privacy -= (100-current.privacy)/length,
             time:accu.time -= (100-current.time)/length
           }
         }
-        return this.scores.reduce(reducer,{privacy:100,time:100})
+        return self.scores.reduce(reducer,{privacy:100,time:100})
       }else{
         return {}
       }
