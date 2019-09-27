@@ -23,6 +23,11 @@ crossorigin="anonymous"></script>
         </b-col>
       </b-row>
       <b-row align-h="center">
+        <b-col v-if="messages" cols="4">
+          {{ messages.congrat}}
+          {{ messages.message}}
+          {{ messages.fun_fact}}
+        </b-col>
         <b-col class="challenge-frame" @mouseenter="hover(0)" @mouseleave="leave(0)" cols="4">
           <b-row align-h="center" class="header-chall">
             {{global_score}}
@@ -68,9 +73,9 @@ crossorigin="anonymous"></script>
           </div>
           <div class="inner comment-chall" v-show="elem.hovered" @mouseenter="hover(i)" @mouseleave="leave(i)">
 
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet leo ipsum, eu laoreet libero pellentesque eget. Integer sed iaculis leo. Nullam sem diam, vulputate in lorem ut, imperdiet laoreet tortor. Quisque scelerisque sollicitudin nunc. Nullam purus turpis, lacinia et risus non, suscipit tempus orci. Duis sapien nulla, tempus sit amet hendrerit ut, viverra non lacus. Nulla mollis, est vitae pulvinar aliquet, massa elit tempus ex, in vehicula quam turpis eget augue. Nunc cursus lacus porta ipsum viverra, eget maximus diam hendrerit. Etiam in augue semper lectus porta posuere. Quisque et eleifend sapien, quis viverra risus. Sed in magna justo. Phasellus porta ultrices nisi. Aliquam eget porttitor tellus, vel finibus eros. Etiam facilisis bibendum cursus.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet leo ipsum, eu laoreet libero pellentesque eget. Integer sed iaculis leo. Nullam sem diam, vulputate in lorem ut, imperdiet laoreet tortor. Quisque scelerisque sollicitudin nunc. Nullam purus turpis, lacinia et risus non, suscipit tempus orci. Duis sapien nulla, tempus sit amet hendrerit ut, viverra non lacus. Nulla mollis, est vitae pulvinar aliquet, massa elit tempus ex, in vehicula quam turpis eget augue. Nunc cursus lacus porta ipsum viverra, eget maximus diam hendrerit. Etiam in augue semper lectus porta posuere. Quisque et eleifend sapien, quis viverra risus. Sed in magna justo. Phasellus porta ultrices nisi. Aliquam eget porttitor tellus, vel finibus eros. Etiam facilisis bibendum cursus.
 
-              Suspendisse a sapien eget magna vestibulum porta non et ipsum. Aenean finibus, elit ac elementum aliquet, odio purus commodo risus, eu gravida magna nisi non lorem. Donec eget iaculis nisl. Phasellus a condimentum orci. Maecenas hendrerit, turpis sed dictum fringilla, ipsum dui scelerisque est, ut bibendum nulla felis sed felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut elementum neque leo, at suscipit elit fringilla pharetra. Aenean facilisis tincidunt nibh, fermentum rhoncus quam malesuada id. Vivamus in risus et dui imperdiet aliquam quis eget ex.
+            Suspendisse a sapien eget magna vestibulum porta non et ipsum. Aenean finibus, elit ac elementum aliquet, odio purus commodo risus, eu gravida magna nisi non lorem. Donec eget iaculis nisl. Phasellus a condimentum orci. Maecenas hendrerit, turpis sed dictum fringilla, ipsum dui scelerisque est, ut bibendum nulla felis sed felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut elementum neque leo, at suscipit elit fringilla pharetra. Aenean facilisis tincidunt nibh, fermentum rhoncus quam malesuada id. Vivamus in risus et dui imperdiet aliquam quis eget ex.
           </div>
         </b-col>
 

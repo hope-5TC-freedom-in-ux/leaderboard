@@ -6,6 +6,7 @@ var app = new Vue({
     value:34,
     username: 'Hello Vue!',
     scores:[],
+    messages:null
   },
   computed:{
     global_score(){
@@ -37,6 +38,9 @@ var app = new Vue({
     $.get("/api/v0.1/user", (res)=>{
       this.username=res.username
     })
+    $.get("/api/v0.1/messages/game", res=>{
+      this.messages=res
+    }")
     $.get("/api/v0.1/scores",(res)=>{
       console.log(res);
       this.scores=res
