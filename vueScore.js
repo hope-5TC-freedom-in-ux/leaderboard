@@ -22,6 +22,9 @@ var app = new Vue({
     }
   },
   mounted(){
+    $.get("/api/v0.1/scores",(res)=>{
+      console.log(res);
+    })
     console.log("MOUNTED")
     this.username="John"
     this.global_score={name:'Challenge 0', privacy:78,time:17}
