@@ -46,4 +46,5 @@ var app = new Vue({
     //   {name:'Challenge 0', privacy:78,time:17},
     //   {name:'Challenge 0', privacy:78,time:17}]
     // }
-  })
+  }
+})
