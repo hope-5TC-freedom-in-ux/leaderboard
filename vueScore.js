@@ -10,15 +10,18 @@ var app = new Vue({
   },
   computed:{
     global_score(){
-      let reducer = function(accu,current){
-      let length = this.scores.length;
-        return {
-          privacy:accu.privacy -= (100-current.privacy)/length,
-          time:accu.time -= (100-current.time)/length
+      if(this.scores !== undefined){
+        let reducer = function(accu,current){
+          let length = this.scores.length;
+          return {
+            privacy:accu.privacy -= (100-current.privacy)/length,
+            time:accu.time -= (100-current.time)/length
+          }
         }
+        return this.scores.reduce(reducer,{privacy:100,time:100})
+      }else{
+        return {}
       }
-      // return {name: "moyenne", privacy:"50", time:"50"}
-      return this.scores.reduce(reducer,{privacy:100,time:100})
     }
   },
   methods:{
