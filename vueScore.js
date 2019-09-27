@@ -10,9 +10,10 @@ var app = new Vue({
   computed:{
     global_score(){
       let reducer = function(accu,current){
+      let length = this.scores.length;
         return {
-          privacy:accu.privacy -= 100-current.privacy,
-          time:accu.time -= 100-current.time
+          privacy:accu.privacy -= (100-current.privacy)/length,
+          time:accu.time -= (100-current.time)/length
         }
       }
       // return {name: "moyenne", privacy:"50", time:"50"}
