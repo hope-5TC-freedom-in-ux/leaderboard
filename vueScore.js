@@ -40,7 +40,7 @@ var app = new Vue({
     })
     $.get("/api/v0.1/messages/game", res=>{
       this.messages=res
-    }")
+    })
     $.get("/api/v0.1/scores",(res)=>{
       console.log(res);
       this.scores=res
