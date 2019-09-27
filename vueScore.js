@@ -6,7 +6,18 @@ var app = new Vue({
     value:34,
     username: 'Hello Vue!',
     scores:[],
-    global_score:{}
+  },
+  computed:{
+    global_score(){
+      let reducer = function(accu,current){
+        return {
+          privacy:accu.privacy -= 100-current.privacy,
+          time:accu.time -= 100-current.time
+        }
+      }
+      // return {name: "moyenne", privacy:"50", time:"50"}
+      return this.scores.reduce(reducer,{privacy:100,time:100})
+    }
   },
   methods:{
     getUsername(){
@@ -22,16 +33,17 @@ var app = new Vue({
     }
   },
   mounted(){
+    $.get("/api/v0.1/user", (res)=>{
+      this.username=res.username
+    })
     $.get("/api/v0.1/scores",(res)=>{
       console.log(res);
+      this.scores=res
     })
-    console.log("MOUNTED")
-    this.username="John"
-    this.global_score={name:'Challenge 0', privacy:78,time:17}
-    this.scores=[
-      {name:'Challenge 0', privacy:78,time:17},
-      {name:'Challenge 0', privacy:78,time:17},
-      {name:'Challenge 0', privacy:78,time:17},
-      {name:'Challenge 0', privacy:78,time:17}]
-    }
+    // this.scores=[
+    //   {name:'Challenge 0', privacy:78,time:17},
+    //   {name:'Challenge 0', privacy:78,time:17},
+    //   {name:'Challenge 0', privacy:78,time:17},
+    //   {name:'Challenge 0', privacy:78,time:17}]
+    // }
   })
