@@ -60,7 +60,7 @@ crossorigin="anonymous"></script>
         <b-col class="challenge-frame" cols="4" v-for="elem,i in scores">
           <div class="inner" v-show="!elem.hovered" @mouseenter="hover(i)" @mouseleave="leave(i)">
             <b-row align-h="center" class="header-chall">
-              {{elem.name}}
+              challenge : {{elem.name}}
             </b-row>
             <b-row align-v="center" class="row body-chall mb-1">
               <div class="col-sm-5">temps</div>
