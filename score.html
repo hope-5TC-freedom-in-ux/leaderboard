@@ -23,12 +23,14 @@ crossorigin="anonymous"></script>
         </b-col>
       </b-row>
       <b-row align-h="center">
-        <b-col v-if="messages" class="body-chall" cols="4">
-          {{ messages.congrat}}
-          {{ messages.message}}
-          {{ messages.fun_fact}}
+        <b-col v-if="messages" class="challenge-frame" cols="4">
+          <b-row v-show="!global_score.hovered" class="row body-chall mb-1">
+            {{ messages.congrat}}
+            {{ messages.message}}
+            {{ messages.fun_fact}}
+          </b-row>
         </b-col>
-        <b-col class="challenge-frame" @mouseenter="hover(0)" @mouseleave="leave(0)" cols="4">
+        <b-col class="challenge-frame" cols="4">
           <b-row align-h="center" class="header-chall">
             Score Global
           </b-row>
