@@ -34,6 +34,9 @@ var app = new Vue({
     hover(index){
       Vue.set(this.scores[index],'hovered',true);
     },
+    nextChallenge(){
+      document.location.href="/"
+    },
     leave(index){
       Vue.set(this.scores[index],'hovered',false);
     }

@@ -23,7 +23,7 @@ crossorigin="anonymous"></script>
         </b-col>
       </b-row>
       <b-row align-h="center">
-        <b-col v-if="messages" cols="4">
+        <b-col v-if="messages" class="body-chall" cols="4">
           {{ messages.congrat}}
           {{ messages.message}}
           {{ messages.fun_fact}}
@@ -81,6 +81,8 @@ crossorigin="anonymous"></script>
 
       </b-row>
     </b-container>
+
+    <b-button @click="nextChallenge">Prochain Challenge</b-button>
   </div>
 </body>
 
